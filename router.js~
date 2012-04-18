@@ -1,0 +1,15 @@
+function route(handle, pathname, response) {
+    if (typeof handle[pathname] === 'function') {
+	handle[pathname](response);
+    }
+    else {
+	response.writeHead(404);
+	console.log("Could not find a handle for " + pathname);
+	response.write('404 not found');
+	response.end();
+    }
+}
+
+exports.route = route;
+
+ 
